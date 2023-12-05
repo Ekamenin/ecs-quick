@@ -1,6 +1,6 @@
 # Define the provider for AWS
 provider "aws" {
-  region = "eu-west-2"  
+  region = "us-east-1"  
 }
 
 # Create an ECS cluster
@@ -20,7 +20,7 @@ resource "aws_ecs_task_definition" "my_task_definition" {
 [
   {
     "name": "my-container",
-    "image": "335871625378.dkr.ecr.eu-west-2.amazonaws.com/netflix-app:latest",  
+    "image": "nginx:latest",  
     "portMappings": [
       {
         "containerPort": 80,
@@ -40,8 +40,8 @@ resource "aws_ecs_service" "my_service" {
   desired_count   = 1
   launch_type     = "FARGATE"
   network_configuration {
-    subnets          = ["subnet-0e8b3d7199bf251a4"]  
-    security_groups  = ["sg-0dab44e5556cb4879"]      
+    subnets          = ["subnet-0fea67ee94dd499db"]  
+    security_groups  = ["sg-03691ff96623ce59d"]      
     assign_public_ip = true
   }
 }
